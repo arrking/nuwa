@@ -1,56 +1,88 @@
-Nodeclub
-=
+# nuwa
 
-[![build status][travis-image]][travis-url]
-[![Coverage Status][coverage-image]][coverage-url]
-[![David deps][david-image]][david-url]
-[![node version][node-image]][node-url]
+> a dianping service platform for micro-plastic surgery.
 
-[travis-image]: https://img.shields.io/travis/cnodejs/nodeclub.svg?style=flat-square
-[travis-url]: https://travis-ci.org/cnodejs/nodeclub
-[coverage-image]: https://img.shields.io/coveralls/cnodejs/nodeclub.svg?style=flat-square
-[coverage-url]: https://coveralls.io/r/cnodejs/nodeclub?branch=master
-[david-image]: https://img.shields.io/david/cnodejs/nodeclub.svg?style=flat-square
-[david-url]: https://david-dm.org/cnodejs/nodeclub
-[node-image]: https://img.shields.io/badge/node.js-%3E=_0.10-green.svg?style=flat-square
-[node-url]: http://nodejs.org/download/
 
-## 介绍
+## [Kick Off Keynote](https://github.com/arrking/nuwa-docs/blob/master/keynotes/nuwa_kick_off.pdf)
 
-Nodeclub 是使用 **Node.js** 和 **MongoDB** 开发的社区系统，界面优雅，功能丰富，小巧迅速，
-已在Node.js 中文技术社区 [CNode(http://cnodejs.org)](http://cnodejs.org) 得到应用，但你完全可以用它搭建自己的社区。
+## Persona
 
-## 安装部署
+* Alice - Platform Administrator 
 
-*不保证 Windows 系统的兼容性*
+Who takes responsibilities for quality of the whole system. Use the management console to filter topics, block user and publish messages.
 
-线上跑的是 Node.js v1.5，MongoDB 是 v2.6。
+Requirements: 
 
+1) Have basic knowledge of micro-plastic surgery.
+2) Take cautious attitude of people's privacy.
+3) Provide feedbacks for the DevOps Team about system functions.
+
+* Cindy - Consumer
+
+Who needs to get micro-plastic surgery service, she want a trustable platform to get knowledge, suggestions and service itself.
+
+People who fall into this category:
+
+(1) The generation after 90s and 80s 
+(2) Young married woman
+(3) Social worker in bar, nightclub and actors.
+(4) People who get involved by friends that takes micro-plastic surgery.
+
+* Duck - Doctor / Expert 
+
+Who works as a micro-plastic doctor, he should be good at some micro-plastic projects.
+
+Requirement:
+
+(1) Certificated materials (2) History with surgeries (3) Have time to answer questions.
+
+
+## Implementation
+
+![image](https://github.com/arrking/nuwa-docs/blob/master/omnigraffle/app-implementations.png)
+
+## [Documentation](https://github.com/arrking/nuwa-docs)
+
+## Engineering
+### Learnings
+
+#### JavaScript
+[JavaScript: the good parts](http://git.oschina.net/ubiware/tech-books/blob/master/javascript-the-good-parts-en-US.pdf)
+#### NodeJS
+[NodeJS in Action](http://git.oschina.net/ubiware/tech-books/blob/master/nodejs-in-action.pdf)
+#### [NodeClub](https://github.com/arrking/wildfire/blob/master/nodeclub.README.md)
+[github](https://github.com/cnodejs/nodeclub)
+[community](https://cnodejs.org/)
+[从开源社区继承的commit 起始点 b03495b](https://github.com/arrking/wildfire/releases/tag/c1)
+#### Ionic
+[Get started](http://ionicframework.com/getting-started/)
+#### Wechat
+[开发者文档](http://mp.weixin.qq.com/wiki/home/index.html)
+
+### Installations
+#### Node
 ```
-1. 安装 `node.js[必须]` `mongodb[必须]` `redis[必须]`
-2. 启动 mongod 和 redis
-3. `$ make install` 安装 Nodeclub 的依赖包
-4. `cp config.default.js config.js` 请根据需要修改配置文件
-5. `$ make test` 确保各项服务都正常
-6. `$ node app.js`
-7. visit `localhost:3000`
-8. done!
+git clone git@github.com:arrking/node.git
+cd node 
+git checkout v0.11.16
+./configure 
+make && sudo make install
+```
+Verify version of node and nom
+```
+npm -v # 2.3.0
+node -v # v0.11.16
 ```
 
-## 其他
-
-跑测试
-
-```bash
-$ make test
+#### pm2
+```
+sudo npm install pm2@0.12.10 -g
 ```
 
-跑覆盖率测试
+#### MongoDB db version v2.6.5
 
-```bash
-$ make test-cov
-```
+#### Redis server v=2.8.17
 
-## License
+#### Cordova 3.6.3-0.2.13, ionic v1.3.19, bower 1.4.1
 
-MIT
+

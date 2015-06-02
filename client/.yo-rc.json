@@ -1,0 +1,12 @@
+{
+  "generator-m": {
+    "answers": {
+      "appName": "nuwa",
+      "appId": "com.arrking.nuwa",
+      "bowerPackages": [],
+      "platforms": [],
+      "plugins": [],
+      "appModule": "nuwa"
+    }
+  }
+}

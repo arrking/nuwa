@@ -37,6 +37,17 @@ Requirement:
 (1) Certificated materials (2) History with surgeries (3) Have time to answer questions.
 
 
+## User Cases
+
+### Cindy
+
+![image](https://cloud.githubusercontent.com/assets/3538629/7954719/af9fcc80-0a04-11e5-80b8-669f2bb8562c.png)
+
+### Duck
+
+![image](https://cloud.githubusercontent.com/assets/3538629/7954803/4f4efef4-0a05-11e5-9347-c6ccf32a5d54.png)
+
+
 ## Implementation
 
 ![image](https://github.com/arrking/nuwa-docs/blob/master/omnigraffle/app-implementations.png)

@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "ionic": "~1.0.0"
+  },
+  "devDependencies": {},
+  "name": "nuwa",
+  "private": true
+}

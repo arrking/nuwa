@@ -16,6 +16,7 @@
 
 # build folder
 /www/**
+/m/**
 
 # IDE
 *.sublime-project

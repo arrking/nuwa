@@ -40,6 +40,12 @@ var UserSchema = new Schema({
   retrieve_key: {type: String},
 
   accessToken: {type: String},
+  profile: { type: Schema.Types.Mixed, require: false},
+  passport: {type: String, require: true, default: 'local'},
+  phone_number: {type: String, require: false},
+  subscribe_type: {type: String, require: false},
+  subscribe_source_identifier: {type: String, require: false},
+  is_wechat_notify: {type: Boolean, require: true, default: true}
 });
 
 UserSchema.virtual('avatar_url').get(function () {

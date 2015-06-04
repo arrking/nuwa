@@ -7,11 +7,14 @@ var Reply = require('../../proxy').Reply;
 var at = require('../../common/at');
 var message = require('../../common/message');
 var config = require('../../config');
+var logger = require('../../common/loggerUtil').getLogger('api/v1/reply');
 
 var create = function (req, res, next) {
   var topic_id = req.params.topic_id;
+  var price = req.body.price;
   var content = req.body.content;
   var reply_id = req.body.reply_id;
+  var reply_to = req.body.reply_to;
 
   var ep = new eventproxy();
   ep.fail(next);
@@ -41,12 +44,13 @@ var create = function (req, res, next) {
   });
 
   ep.all('topic', 'topic_author', function (topic, topicAuthor) {
-    Reply.newAndSave(content, topic_id, req.user.id, reply_id, ep.done(function (reply) {
+    Reply.newAndSaveWithPriceAndReplyto(price, reply_to, content, topic_id, req.user.id, reply_id, ep.done(function (reply) {
       Topic.updateLastReply(topic_id, reply._id, ep.done(function () {
         ep.emit('reply_saved', reply);
         //发送at消息，并防止重复 at 作者
         var newContent = content.replace('@' + topicAuthor.loginname + ' ', '');
         at.sendMessageToMentionUsers(newContent, topic_id, req.user.id, reply._id);
+
       }));
     }));
 
@@ -61,7 +65,9 @@ var create = function (req, res, next) {
   ep.all('reply_saved', 'topic', function (reply, topic) {
     if (topic.author_id.toString() !== req.user.id.toString()) {
       message.sendReplyMessage(topic.author_id, req.user.id, topic._id, reply._id);
+      logger.debug('create', 'reply_saved, sendReplyMessage');
     }
+
     ep.emit('message_saved');
   });
 

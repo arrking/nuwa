@@ -40,16 +40,16 @@ exports.getReplyById = function (id, callback) {
       reply.author = author;
       reply.friendly_create_at = tools.formatDate(reply.create_at, true);
       // TODO: 添加更新方法，有些旧帖子可以转换为markdown格式的内容
-      if (reply.content_is_html) {
+      //if (reply.content_is_html) {
         return callback(null, reply);
-      }
+      /*}
       at.linkUsers(reply.content, function (err, str) {
         if (err) {
           return callback(err);
         }
         reply.content = str;
         return callback(err, reply);
-      });
+      });*/
     });
   });
 };
@@ -84,21 +84,23 @@ exports.getRepliesByTopicId = function (id, cb) {
           }
           replies[i].author = author || { _id: '' };
           replies[i].friendly_create_at = tools.formatDate(replies[i].create_at, true);
-          if (replies[i].content_is_html) {
+
+          //if (replies[i].content_is_html) {
             return proxy.emit('reply_find');
-          }
+          /*}
           at.linkUsers(replies[i].content, function (err, str) {
             if (err) {
               return cb(err);
             }
             replies[i].content = str;
             proxy.emit('reply_find');
-          });
+          });*/
         });
       })(j);
     }
   });
 };
+
 
 /**
  * 创建并保存一条回复信息
@@ -117,6 +119,39 @@ exports.newAndSave = function (content, topicId, authorId, replyId, callback) {
   reply.content = content;
   reply.topic_id = topicId;
   reply.author_id = authorId;
+  if (replyId) {
+    reply.reply_id = replyId;
+  }
+  reply.save(function (err) {
+    callback(err, reply);
+  });
+};
+
+
+/**
+ * Create a reply and related message with price and its replyTo userName.
+ * @param  {[type]}   price    [description]
+ * @param  {[type]}   replyTo  [description]
+ * @param  {[type]}   content  [description]
+ * @param  {[type]}   topicId  [description]
+ * @param  {[type]}   authorId [description]
+ * @param  {[type]}   replyId  [description]
+ * @param  {Function} callback [description]
+ * @return {[type]}            [description]
+ */
+exports.newAndSaveWithPriceAndReplyto = function (price, replyTo, content, topicId, authorId, replyId, callback) {
+  if (typeof replyId === 'function') {
+    callback = replyId;
+    replyId = null;
+  }
+  var reply = new Reply();
+  reply.price = price;
+  reply.content = content;
+  reply.topic_id = topicId;
+  reply.author_id = authorId;
+  if(replyTo) {
+    reply.reply_to = replyTo;
+  }
   if (replyId) {
     reply.reply_id = replyId;
   }

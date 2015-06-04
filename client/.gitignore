@@ -5,7 +5,7 @@
 
 # npm & bower
 /node_modules/
-/app/bower_components/
+/app/bower_components
 
 # ionic fonts
 /app/main/assets/fonts/ionicons.*

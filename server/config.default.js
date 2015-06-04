@@ -14,7 +14,7 @@ var config = {
         return !this.debug;
     }, // 是否启用静态文件的合并压缩，详见视图中的Loader
 
-    name: 'wildfire-server', // 社区名字
+    name: 'nuwa-server', // 社区名字
     description: '', // 社区的描述
     keywords: 'nodejs, node, express, connect, socket.io',
 
@@ -41,12 +41,12 @@ var config = {
     cnzz_tracker_id: '',
 
     // mongodb 配置
-    db: 'mongodb://127.0.0.1/wildfire',
-    db_name: 'wildfire',
+    db: 'mongodb://127.0.0.1/nuwadb',
+    db_name: 'nuwadb',
 
     // redis 配置，默认是本地
     redis_host: '127.0.0.1',
-    redis_port: 6379,
+    redis_port: 6399,
     redis_pass: null,
 
     session_secret: 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
@@ -54,10 +54,10 @@ var config = {
             v = c == 'x' ? r : r & 0x3 | 0x8;
         return v.toString(16);
     }),
-    auth_cookie_name: 'wildfire_sid',
+    auth_cookie_name: 'nuwa_sid',
 
     // 程序运行的端口
-    port: 3000,
+    port: 3088,
 
     // 话题列表显示的话题数量
     list_topic_count: 20,
@@ -122,13 +122,38 @@ var config = {
 
     // 版块
     tabs: [
-        ['books', '教材书籍'],
-        ['transports', '代步工具'],
-        ['electronics', '数码电器'],
-        ['supplies', '生活用品'],
-        ['healthcare', '运动健身'],
-        ['clothes', '衣帽饰物'],
-        ['others', '其它']
+        [
+            "eyes",
+            "眼部"
+        ],
+        [
+            "nose",
+            "鼻部"
+        ],
+        [
+            "face",
+            "脸型"
+        ],
+        [
+            "skin",
+            "美肤"
+        ],
+        [
+            "figure",
+            "体型"
+        ],
+        [
+            "chest",
+            "美胸"
+        ],
+        [
+            "lips",
+            "口唇"
+        ],
+        [
+            "others",
+            "其它"
+        ]
     ],
 
     // 极光推送

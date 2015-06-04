@@ -35,7 +35,7 @@ var config = {
   cnzz_tracker_id: '',
 
   // mongodb 配置
-  db: 'mongodb://127.0.0.1/nuwa',
+  db: 'mongodb://james:VatjuAdKs2sx1el3@115.28.162.221:27088/nuwadb',
   db_name: 'nuwa',
 
   // redis 配置，默认是本地

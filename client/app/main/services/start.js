@@ -1,7 +1,7 @@
 'use strict';
 angular.module('main')
 
-.factory('Chats', function() {
+.factory('Chats', function () {
   // Might use a resource here that returns a JSON array
 
   // Some fake testing data
@@ -15,7 +15,7 @@ angular.module('main')
     name: 'Max Lynx',
     lastText: 'Hey, it\'s me',
     face: 'https://avatars3.githubusercontent.com/u/11214?v=3&s=460'
-  },{
+  }, {
     id: 2,
     name: 'Adam Bradleyson',
     lastText: 'I should buy a boat',
@@ -33,13 +33,13 @@ angular.module('main')
   }];
 
   return {
-    all: function() {
+    all: function () {
       return chats;
     },
-    remove: function(chat) {
+    remove: function (chat) {
       chats.splice(chats.indexOf(chat), 1);
     },
-    get: function(chatId) {
+    get: function (chatId) {
       for (var i = 0; i < chats.length; i++) {
         if (chats[i].id === parseInt(chatId)) {
           return chats[i];

@@ -5,7 +5,7 @@ angular.module('main', [
   // TODO: load other modules selected during generation
 ])
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function ($stateProvider, $urlRouterProvider) {
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
@@ -15,9 +15,9 @@ angular.module('main', [
 
   // setup an abstract state for the tabs directive
     .state('tab', {
-    url: "/tab",
+    url: '/tab',
     abstract: true,
-    templateUrl: "main/templates/tabs.html"
+    templateUrl: 'main/templates/tabs.html'
   })
 
   // Each tab has its own nav history stack:
